@@ -8,10 +8,10 @@ module.exports = {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: `key8KIoDLtssz0g54`,
-        baseId: `appswoobu90DjfHdO`,
+        baseId: `appnJxBhyDCj7MHTe`,
         tableName: `Produtos`,
         tableView: `Ordem do site`,
-        queryName: `produtos`,
+        queryName: ``,
     }
   }],
 }

@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 const IndexPage = (data) => (
   <div>
     <h1>Hi people</h1>
-    {data.data.allAirtableprodutos.edges.map(({node}, index) => 
+    {data.data.allAirtable.edges.map(({node}, index) => 
        <div key={index}>{node.Nome}</div>
     )
     }
@@ -17,7 +17,7 @@ const IndexPage = (data) => (
 export default IndexPage
 
 export const query = graphql`
-query produtos{allAirtableprodutos {
+query produtos{allAirtable {
   edges {
     node {
       id
