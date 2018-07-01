@@ -8,6 +8,7 @@ class IndexPage extends React.Component {
     super(props)
     this.state = {
       tabs: [
+        "todos",
         "essencial",
         "designlab",
         "cristal",
@@ -25,7 +26,7 @@ class IndexPage extends React.Component {
 
   filterProducts(linha) {
     const filteredProducts = this.props.data.allAirtable.edges.filter((item) => item.node.Linha == this.state.selectedTab)
-    return(filteredProducts)
+    return(this.state.selectedTab == "todos" ? this.props.data.allAirtable.edges : filteredProducts )
   }
 
   render(){
@@ -33,7 +34,7 @@ class IndexPage extends React.Component {
     <div>
     <h1>Hi people</h1>
     {this.state.tabs.map((item) => 
-      <button onClick={() => this.changeSelectedTab(item)}>{item}</button>
+      <button key={item} onClick={() => this.changeSelectedTab(item)}>{item}</button>
     )}
     
     <Gallery data={this.filterProducts(this.state.selectedTab)}/>
@@ -48,12 +49,21 @@ class IndexPage extends React.Component {
 export default IndexPage
 
 export const query = graphql`
-query produtos{allAirtable {
-  edges {
-    node {
-      id
-      Linha
-      Nome
+query produtos{
+  allAirtable{
+    edges{
+      node{
+        id
+        Linha
+        Nome
+        Fotos {
+          thumbnails{
+            large {
+              url
+            }
+          }
+        }
+      }
     }
   }
-}}`
+}`
