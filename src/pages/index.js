@@ -3,10 +3,16 @@ import Link from 'gatsby-link'
 import Gallery from '../components/gallery'
 
 class IndexPage extends React.Component {
-  
+
   constructor(props){
     super(props)
     this.state = {
+      tabs: [
+        "essencial",
+        "designlab",
+        "cristal",
+        "vintage"
+      ],
       selectedTab: "essencial",
     }
   }
@@ -26,7 +32,10 @@ class IndexPage extends React.Component {
     return(
     <div>
     <h1>Hi people</h1>
-    <button onClick={() => this.changeSelectedTab("designlab")}>DesignLab</button>
+    {this.state.tabs.map((item) => 
+      <button onClick={() => this.changeSelectedTab(item)}>{item}</button>
+    )}
+    
     <Gallery data={this.filterProducts(this.state.selectedTab)}/>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
