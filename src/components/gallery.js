@@ -4,7 +4,6 @@ import GalleryThumbnail from '../components/gallery_thumbnail'
 const Gallery = (props) => (
        
     <div>
-        {console.log(props)} 
         {props.data.map(({node}, index) => 
        <GalleryThumbnail key={index} product={node} />)}
     </div>
